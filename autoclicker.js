@@ -8,7 +8,7 @@ var autoclicker = function(clicksatonce,clickinterval)
             with(Game.clickables[Object.keys(Game.clickables)[j]])
             if(visible)
             {
-                for(i=0;i= parseFloat('1e' + 3*(nums.length + 1))) return Math.round(num);
+                for(i=0;i= parseFloat('1e' + 3*(nums.length + 1));) return Math.round(num);
                 var i = 0;
                 while(num >= 1000)
                 {
