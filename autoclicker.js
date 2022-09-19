@@ -1,36 +1,23 @@
 Game.PopNumber = function(el, text) {} //else it goes crazy.
+
 var autoclicker = function(clicksatonce,clickinterval)
 {
     autoclick = function()
     {
-        for(j in Object.keys(Game.clickables))
+        for(j in  Object.keys(Game.clickables))
         {
             with(Game.clickables[Object.keys(Game.clickables)[j]])
             if(visible)
             {
-                for(i=0;i= parseFloat('1e' + 3*(nums.length + 1));) return Math.round(num);
-                var i = 0;
-                while(num >= 1000)
+                for(i=0;i<clicksatonce;i++)
                 {
-                    num/=1000;
-                    i++;
+                    Click()
                 }
-                num = Math.round(num*1000)/1000;
-                if(num>=1000)
-                {
-                    num/=1000;
-                    i++;
-                    num = Math.round(num*1000)/1000;
-                } //deals with rounding errors
-                num = num.toString();
-                if(num.indexOf('.') == -1) num += '.000';
-                else
-                {
-                    dec = num.indexOf('.');
-                    while(num.slice(dec,num.length).length < 4) num += '0'; //adds trailing 0s (if needed) to stop the numbers jumping around.
-                }
-                return num + nums[i - 1];
             }
         }
     }
+    
+    return setInterval(autoclick,clickinterval)
 }
+
+autoclicker(100,1) /*the first number is how many clicks at once, the second is how often to do them in milliseconds. If there are a lot of clickables set it lower.*/
